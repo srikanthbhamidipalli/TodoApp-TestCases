@@ -13,4 +13,11 @@ describe("Filter Bar test cases", () => {
     fireEvent.click(clearCompleted);
     expect(todoStore.clearCompletedTodos).toBeCalled();
   });
+
+  it("should check for the items left text containing element is rendered or not", () => {
+    const todoStore = new TodoStore();
+    const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
+    const itemsLeft = getByTestId("items-left");
+    expect(itemsLeft).toBeDefined();
+  });
 });
