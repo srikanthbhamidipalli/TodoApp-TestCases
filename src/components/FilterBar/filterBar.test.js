@@ -39,4 +39,12 @@ describe("Filter Bar test cases", () => {
     fireEvent.click(activeButton, { target: { value: active } });
     expect(todoStore.setFilterText).toBeCalledWith(active);
   });
+  it("should check for the completed button on click event", () => {
+    const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
+    const completedButton = getByTestId("completed-button");
+    const completed = "completed";
+    jest.spyOn(todoStore, "setFilterText");
+    fireEvent.click(completedButton, { target: { value: completed } });
+    expect(todoStore.setFilterText).toBeCalledWith(completed);
+  });
 });
