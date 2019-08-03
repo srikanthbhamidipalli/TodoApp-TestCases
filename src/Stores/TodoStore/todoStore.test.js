@@ -23,6 +23,10 @@ describe("TodoStore test cases", () => {
     expect(todoStore.removeTodo).toBeCalledWith(todoId);
   });
   it("should check for the todos left count", () => {
-    expect(todoStore.activeTodosCount).toBeDefined();
+    expect(todoStore.todoList.length).toBe(0);
+    todoStore.addTodo("hello");
+    expect(todoStore.activeTodosCount).toBe(1);
+    todoStore.todoList[0].toggleCompletedStatus();
+    expect(todoStore.activeTodosCount).toBe(0);
   });
 });

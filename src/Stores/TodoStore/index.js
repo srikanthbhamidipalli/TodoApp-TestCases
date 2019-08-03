@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+import { observable, action, computed, get } from "mobx";
 import TodoModel from "../../Models/TodoModel";
 class TodoStore {
   @observable todoList = [];
@@ -18,6 +18,11 @@ class TodoStore {
     this.todoList = this.todoList.filter(
       todoItem => todoItem.isCompleted !== true
     );
+  }
+
+  @computed get activeTodosCount() {
+    return this.todoList.filter(todoItem => todoItem.isCompleted !== true)
+      .length;
   }
 }
 export default TodoStore;
