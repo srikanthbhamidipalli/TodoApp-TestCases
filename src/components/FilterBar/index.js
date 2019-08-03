@@ -4,7 +4,7 @@ class FilterBar extends Component {
   handleClearCompletedClick = () => {
     this.props.todoStore.clearCompletedTodos();
   };
-  handleAllButtonClick = e => {
+  handleFilterButtonClick = e => {
     this.props.todoStore.setFilterText(e.target.value);
   };
   render() {
@@ -16,7 +16,7 @@ class FilterBar extends Component {
         <span>
           <button
             data-testid="all-button"
-            onClick={this.handleAllButtonClick}
+            onClick={this.handleFilterButtonClick}
             value="all"
           >
             all
@@ -25,7 +25,7 @@ class FilterBar extends Component {
         <span>
           <button
             data-testid="active-button"
-            onClick={this.handleAllButtonClick}
+            onClick={this.handleFilterButtonClick}
             value="active"
           >
             active
