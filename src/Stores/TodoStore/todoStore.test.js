@@ -29,4 +29,8 @@ describe("TodoStore test cases", () => {
     todoStore.todoList[0].toggleCompletedStatus();
     expect(todoStore.activeTodosCount).toBe(0);
   });
+  it("should check for the filter text is setting upto the state variable or not", () => {
+    todoStore.setFilterText("all");
+    expect(todoStore.filterText).toBe("all");
+  });
 });
