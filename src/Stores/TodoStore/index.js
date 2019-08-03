@@ -21,8 +21,8 @@ class TodoStore {
     );
   }
 
-  @action.bound setFilterText(filtername) {
-    this.filterText = filtername;
+  @action.bound setFilterText(filterName) {
+    this.filterText = filterName;
   }
 
   @computed get activeTodosCount() {

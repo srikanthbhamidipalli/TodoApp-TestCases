@@ -30,7 +30,8 @@ describe("TodoStore test cases", () => {
     expect(todoStore.activeTodosCount).toBe(0);
   });
   it("should check for the filter text is setting upto the state variable or not", () => {
-    todoStore.setFilterText("all");
-    expect(todoStore.filterText).toBe("all");
+    const filterName = "all";
+    todoStore.setFilterText(filterName);
+    expect(todoStore.filterText).toBe(filterName);
   });
 });
