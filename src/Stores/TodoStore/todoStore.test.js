@@ -49,6 +49,6 @@ describe("TodoStore test cases", () => {
     const filterName = "active";
     todoStore.setFilterText(filterName);
     todoStore.todoList[0].toggleCompletedStatus();
-    expect(todoStore.filterTodos).toBe(todoStore.todoList[1]);
+    expect(todoStore.filterTodos).toHaveLength(1);
   });
 });
