@@ -29,5 +29,11 @@ class TodoStore {
     return this.todoList.filter(todoItem => todoItem.isCompleted !== true)
       .length;
   }
+
+  @computed get filterTodos() {
+    if (this.filterText === "all") {
+      return this.todoList;
+    }
+  }
 }
 export default TodoStore;
