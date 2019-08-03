@@ -31,6 +31,15 @@ class FilterBar extends Component {
             active
           </button>
         </span>
+        <span>
+          <button
+            data-testid="completed-button"
+            onClick={this.handleFilterButtonClick}
+            value="completed"
+          >
+            completed
+          </button>
+        </span>
         <span
           onClick={this.handleClearCompletedClick}
           data-testid="clear-completed"
