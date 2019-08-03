@@ -1,9 +1,10 @@
 import { observable, action, computed, get } from "mobx";
 import TodoModel from "../../Models/TodoModel";
+import { filterNames } from "../../constants";
 class TodoStore {
   @observable todoList = [];
   @observable isTodoDoubleClicked = false;
-  @observable filterText = "active";
+  @observable filterText = filterNames.All;
 
   @action.bound addTodo(todoItemDescription) {
     const todoInstance = new TodoModel(todoItemDescription);
@@ -31,14 +32,13 @@ class TodoStore {
   }
 
   @computed get filterTodos() {
-    const all = "all";
-    if (this.filterText === all) {
+    if (this.filterText === filterNames.All) {
       return this.todoList;
     }
-    if (this.filterText === "active") {
+    if (this.filterText === filterNames.Active) {
       return this.todoList.filter(todoItem => todoItem.isCompleted !== true);
     }
-    if (this.filterText === "completed") {
+    if (this.filterText === filterNames.Completed) {
       return this.todoList.filter(todoItem => todoItem.isCompleted === true);
     }
   }

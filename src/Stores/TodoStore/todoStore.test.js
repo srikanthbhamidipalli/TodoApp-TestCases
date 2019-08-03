@@ -1,5 +1,5 @@
 import TodoStore from "./index";
-
+import { filterNames } from "../../constants";
 describe("TodoStore test cases", () => {
   let todoStore;
   beforeEach(() => {
@@ -30,15 +30,14 @@ describe("TodoStore test cases", () => {
     expect(todoStore.activeTodosCount).toBe(0);
   });
   it("should check for the filter text is setting upto the state variable or not", () => {
-    const filterName = "all";
+    const filterName = filterNames.All;
     todoStore.setFilterText(filterName);
     expect(todoStore.filterText).toBe(filterName);
   });
-  it("should check for the filter Todos computed value functionality", () => {
+  it("should check for the filter Todos computed value functionality for All Button", () => {
     todoStore.addTodo("hello");
     todoStore.addTodo("hello world");
-    const filterName = "all";
-    todoStore.setFilterText(filterName);
+    todoStore.setFilterText(filterNames.All);
     expect(todoStore.filterTodos).toBe(todoStore.todoList);
     todoStore.todoList[0].toggleCompletedStatus();
     expect(todoStore.filterTodos).toBe(todoStore.todoList);
@@ -46,16 +45,14 @@ describe("TodoStore test cases", () => {
   it("should check for the filter Todos computed value functionality for Active Button", () => {
     todoStore.addTodo("hello");
     todoStore.addTodo("hello world");
-    const filterName = "active";
-    todoStore.setFilterText(filterName);
+    todoStore.setFilterText(filterNames.Active);
     todoStore.todoList[0].toggleCompletedStatus();
     expect(todoStore.filterTodos).toHaveLength(1);
   });
   it("should check for the filter Todos computed value functionality for completed Button", () => {
     todoStore.addTodo("hello");
     todoStore.addTodo("hello world");
-    const filterName = "completed";
-    todoStore.setFilterText(filterName);
+    todoStore.setFilterText(filterNames.Completed);
     todoStore.todoList[0].toggleCompletedStatus();
     expect(todoStore.filterTodos).toHaveLength(1);
     todoStore.todoList[1].toggleCompletedStatus();
