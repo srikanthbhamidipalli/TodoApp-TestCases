@@ -4,9 +4,12 @@ import FilterBar from ".";
 import TodoStore from "../../Stores/TodoStore";
 
 describe("Filter Bar test cases", () => {
+  let todoStore;
   afterEach(cleanup);
+  beforeEach(() => {
+    todoStore = new TodoStore();
+  });
   it("should check for the functionality of clear completed", () => {
-    const todoStore = new TodoStore();
     jest.spyOn(todoStore, "clearCompletedTodos");
     const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
     const clearCompleted = getByTestId("clear-completed");
@@ -16,7 +19,6 @@ describe("Filter Bar test cases", () => {
   });
 
   it("should check for the items left text containing element is rendered or not", () => {
-    const todoStore = new TodoStore();
     const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
     const itemsLeft = getByTestId("items-left");
     expect(itemsLeft).toBeDefined();
