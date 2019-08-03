@@ -23,8 +23,8 @@ describe("TodoStore test cases", () => {
     expect(todoStore.removeTodo).toBeCalledWith(todoId);
   });
   it("should check for the todos left count", () => {
-    expect(todoStore.todoList.length).toBe(0);
-    todoStore.addTodo("hello");
+    const description = "hello";
+    todoStore.addTodo(description);
     expect(todoStore.activeTodosCount).toBe(1);
     todoStore.todoList[0].toggleCompletedStatus();
     expect(todoStore.activeTodosCount).toBe(0);
