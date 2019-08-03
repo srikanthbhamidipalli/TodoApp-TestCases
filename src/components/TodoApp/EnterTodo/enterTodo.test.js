@@ -4,6 +4,7 @@ import EnterTodo from "./index";
 import TodoStore from "../../../Stores/TodoStore";
 
 describe("EnterTodo component testcases", () => {
+  const todoStore = new TodoStore();
   let keyDownEvent;
   afterEach(cleanup);
   beforeEach(() => {
@@ -12,11 +13,11 @@ describe("EnterTodo component testcases", () => {
       keyCode: 13,
       code: 13
     };
+    jest.spyOn(todoStore, "addTodo");
   });
-  const todoStore = new TodoStore();
   it("should Take a todo description from InputTextBox", () => {
     // todoStore.addTodo = jest.fn();
-    jest.spyOn(todoStore, "addTodo");
+
     const { getByPlaceholderText } = render(
       <EnterTodo
         todoStore={todoStore}
@@ -33,7 +34,6 @@ describe("EnterTodo component testcases", () => {
     expect(todoStore.addTodo).toBeCalledWith(todoDesc);
   });
   it("should check for not to submit the todo when input text is empty", () => {
-    jest.spyOn(todoStore, "addTodo");
     const { getByPlaceholderText } = render(
       <EnterTodo
         todoStore={todoStore}
@@ -47,7 +47,6 @@ describe("EnterTodo component testcases", () => {
     expect(todoStore.addTodo).not.toBeCalledWith(todoDesc);
   });
   it("should check for not to submit the todo when input text is filled with only spaces", () => {
-    jest.spyOn(todoStore, "addTodo");
     const { getByPlaceholderText } = render(
       <EnterTodo
         todoStore={todoStore}
