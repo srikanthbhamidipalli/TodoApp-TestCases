@@ -9,7 +9,8 @@ class EachTodo extends Component {
     this.props.todoItem.toggleCompletedStatus();
   };
   handleDeleteIconClick = () => {
-    this.props.todoStore.removeTodo(this.props.todoItem.id);
+    if (window.confirm())
+      this.props.todoStore.removeTodo(this.props.todoItem.id);
   };
   handleDoubleClickEvent = () => {
     this.props.todoStore.isTodoDoubleClicked = true;
