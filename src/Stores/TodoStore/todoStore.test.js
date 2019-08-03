@@ -34,4 +34,12 @@ describe("TodoStore test cases", () => {
     todoStore.setFilterText(filterName);
     expect(todoStore.filterText).toBe(filterName);
   });
+  it("should check for the filter Todos computed value functionality", () => {
+    todoStore.addTodo("hello");
+    todoStore.addTodo("hello world");
+    todoStore.setFilterText("all");
+    expect(todoStore.filterTodos).toBe(todoStore.todoList);
+    todoStore.todoList[0].toggleCompletedStatus();
+    expect(todoStore.filterTodos).toBe(todoStore.todoList);
+  });
 });
