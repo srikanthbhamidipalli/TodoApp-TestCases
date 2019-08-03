@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { filterNames } from "../../constants";
-
+import { filterNames } from "../../../constants";
+import { observer } from "mobx-react";
+@observer
 class FilterBar extends Component {
   handleClearCompletedClick = () => {
     this.props.todoStore.clearCompletedTodos();

@@ -1,8 +1,8 @@
 import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import FilterBar from ".";
-import TodoStore from "../../Stores/TodoStore";
-import { filterNames } from "../../constants";
+import TodoStore from "../../../Stores/TodoStore";
+import { filterNames } from "../../../constants";
 
 describe("Filter Bar test cases", () => {
   let todoStore;

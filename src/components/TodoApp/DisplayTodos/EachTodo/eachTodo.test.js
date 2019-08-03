@@ -1,8 +1,8 @@
 import EachTodo from ".";
 import React from "react";
 import { render, fireEvent, cleanup, getByText } from "@testing-library/react";
-import TodoModel from "../../../Models/TodoModel";
-import TodoStore from "../../../Stores/TodoStore";
+import TodoModel from "../../../../Models/TodoModel";
+import TodoStore from "../../../../Stores/TodoStore";
 describe("EachTodo component test cases", () => {
   let todoItem;
   afterEach(cleanup);

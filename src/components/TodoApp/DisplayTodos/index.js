@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 @observer
 class DisplayTodos extends Component {
   render() {
-    const todoList = this.props.todoStore.todoList.map(todoItem => (
+    const todoList = this.props.todoStore.filterTodos.map(todoItem => (
       <div>
         <EachTodo
           key={todoItem.id}

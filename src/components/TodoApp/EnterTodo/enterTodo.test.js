@@ -1,8 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import EnterTodo from "./index";
-import TodoStore from "../../Stores/TodoStore";
-import TodoModel from "../../Models/TodoModel";
+import TodoStore from "../../../Stores/TodoStore";
 
 describe("EnterTodo component testcases", () => {
   const todoStore = new TodoStore();

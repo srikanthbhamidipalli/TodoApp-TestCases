@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import DisplayTodos from ".";
-import TodoStore from "../../Stores/TodoStore";
+import DisplayTodos from "./index";
+import TodoStore from "../../../Stores/TodoStore";
 
 describe("Display todos Component test cases", () => {
   const todoStore = new TodoStore();

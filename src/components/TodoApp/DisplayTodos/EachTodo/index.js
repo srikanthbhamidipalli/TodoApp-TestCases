@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
 import { TodoDescription } from "./styledComponents";
-import { observable } from "mobx";
 import EnterTodo from "../../EnterTodo";
-import TodoStore from "../../../Stores/TodoStore";
 
 @observer
 class EachTodo extends Component {
