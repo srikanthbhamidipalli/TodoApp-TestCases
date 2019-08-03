@@ -43,4 +43,12 @@ describe("TodoStore test cases", () => {
     todoStore.todoList[0].toggleCompletedStatus();
     expect(todoStore.filterTodos).toBe(todoStore.todoList);
   });
+  it("should check for the filter Todos computed value functionality for Active Button", () => {
+    todoStore.addTodo("hello");
+    todoStore.addTodo("hello world");
+    const filterName = "active";
+    todoStore.setFilterText(filterName);
+    todoStore.todoList[0].toggleCompletedStatus();
+    expect(todoStore.filterTodos).toBe(todoStore.todoList[1]);
+  });
 });
