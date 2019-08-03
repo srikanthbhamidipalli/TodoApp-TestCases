@@ -3,6 +3,7 @@ import TodoModel from "../../Models/TodoModel";
 class TodoStore {
   @observable todoList = [];
   @observable isTodoDoubleClicked = false;
+  @observable filterText = "active";
 
   @action.bound addTodo(todoItemDescription) {
     const todoInstance = new TodoModel(todoItemDescription);
@@ -18,6 +19,10 @@ class TodoStore {
     this.todoList = this.todoList.filter(
       todoItem => todoItem.isCompleted !== true
     );
+  }
+
+  @action.bound setFilterText(filtername) {
+    this.filterText = filtername;
   }
 
   @computed get activeTodosCount() {
