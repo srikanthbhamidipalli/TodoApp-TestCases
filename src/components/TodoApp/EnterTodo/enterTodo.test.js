@@ -46,4 +46,20 @@ describe("EnterTodo component testcases", () => {
     fireEvent.keyDown(inputTextBox, keyDownEvent);
     expect(todoStore.addTodo).not.toBeCalledWith(todoDesc);
   });
+  it("should check for not to submit the todo when input text is filled with only spaces", () => {
+    jest.spyOn(todoStore, "addTodo");
+    const { getByPlaceholderText } = render(
+      <EnterTodo
+        todoStore={todoStore}
+        inputText={""}
+        onPressEnterKey={todoStore.addTodo}
+      />
+    );
+    const inputTextBox = getByPlaceholderText("What needs to be done");
+    const todoDesc = "                                       ";
+    const changeEvent = { target: { value: todoDesc } };
+    fireEvent.change(inputTextBox, changeEvent);
+    fireEvent.keyDown(inputTextBox, keyDownEvent);
+    expect(todoStore.addTodo).not.toBeCalledWith(todoDesc);
+  });
 });
