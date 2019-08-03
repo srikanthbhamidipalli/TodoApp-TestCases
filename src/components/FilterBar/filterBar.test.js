@@ -1,9 +1,10 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import FilterBar from ".";
 import TodoStore from "../../Stores/TodoStore";
 
 describe("Filter Bar test cases", () => {
+  afterEach(cleanup);
   it("should check for the functionality of clear completed", () => {
     const todoStore = new TodoStore();
     jest.spyOn(todoStore, "clearCompletedTodos");
