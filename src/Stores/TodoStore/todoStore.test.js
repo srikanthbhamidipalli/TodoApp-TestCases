@@ -22,7 +22,7 @@ describe("TodoStore test cases", () => {
     todoStore.removeTodo(todoId);
     expect(todoStore.removeTodo).toBeCalledWith(todoId);
   });
-  it("should check for the active todos count", () => {
+  it("should check for the todos left count", () => {
     expect(todoStore.activeTodosCount).toBeDefined();
   });
 });
