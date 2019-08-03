@@ -26,8 +26,9 @@ describe("Filter Bar test cases", () => {
   it("should check for the all button on click event", () => {
     const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
     const activeButton = getByTestId("all-button");
+    const all = "all";
     jest.spyOn(todoStore, "setFilterText");
-    fireEvent.click(activeButton, { target: { value: "all" } });
-    expect(todoStore.setFilterText).toBeCalledWith("all");
+    fireEvent.click(activeButton, { target: { value: all } });
+    expect(todoStore.setFilterText).toBeCalledWith(all);
   });
 });
