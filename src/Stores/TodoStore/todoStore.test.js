@@ -51,4 +51,14 @@ describe("TodoStore test cases", () => {
     todoStore.todoList[0].toggleCompletedStatus();
     expect(todoStore.filterTodos).toHaveLength(1);
   });
+  it("should check for the filter Todos computed value functionality for completed Button", () => {
+    todoStore.addTodo("hello");
+    todoStore.addTodo("hello world");
+    const filterName = "completed";
+    todoStore.setFilterText(filterName);
+    todoStore.todoList[0].toggleCompletedStatus();
+    expect(todoStore.filterTodos).toHaveLength(1);
+    todoStore.todoList[1].toggleCompletedStatus();
+    expect(todoStore.filterTodos).toHaveLength(2);
+  });
 });
