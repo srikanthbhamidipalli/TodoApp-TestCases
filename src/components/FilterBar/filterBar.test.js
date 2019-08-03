@@ -25,10 +25,18 @@ describe("Filter Bar test cases", () => {
   });
   it("should check for the all button on click event", () => {
     const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
-    const activeButton = getByTestId("all-button");
+    const allButton = getByTestId("all-button");
     const all = "all";
     jest.spyOn(todoStore, "setFilterText");
-    fireEvent.click(activeButton, { target: { value: all } });
+    fireEvent.click(allButton, { target: { value: all } });
     expect(todoStore.setFilterText).toBeCalledWith(all);
+  });
+  it("should check for the active button on click event", () => {
+    const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
+    const activeButton = getByTestId("active-button");
+    const active = "active";
+    jest.spyOn(todoStore, "setFilterText");
+    fireEvent.click(activeButton, { target: { value: active } });
+    expect(todoStore.setFilterText).toBeCalledWith(active);
   });
 });
