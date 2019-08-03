@@ -25,7 +25,11 @@ describe("EachTodo component test cases", () => {
     const { getByTestId } = render(
       <EachTodo todoItem={todoItem} todoStore={todoStore} />
     );
+    window.confirm = jest.fn(() => false);
     const crossmark = getByTestId("crossmark");
+    fireEvent.click(crossmark);
+    expect(todoStore.removeTodo).not.toBeCalledWith(todoItem.id);
+    window.confirm = jest.fn(() => true);
     fireEvent.click(crossmark);
     expect(todoStore.removeTodo).toBeCalledWith(todoItem.id);
   });
