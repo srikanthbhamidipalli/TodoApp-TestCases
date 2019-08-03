@@ -23,7 +23,9 @@ class EnterTodo extends Component {
           type="text"
           placeholder="What needs to be done"
           onChange={this.handleChangeEvent}
-          onKeyDown={this.inputText !== "" ? this.handleKeyDownEvent : null}
+          onKeyDown={
+            this.inputText.trim() !== "" ? this.handleKeyDownEvent : null
+          }
           value={this.inputText}
         />
       </div>
