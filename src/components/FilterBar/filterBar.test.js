@@ -2,6 +2,7 @@ import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import FilterBar from ".";
 import TodoStore from "../../Stores/TodoStore";
+import { filterNames } from "../../constants";
 
 describe("Filter Bar test cases", () => {
   let todoStore;
@@ -26,25 +27,24 @@ describe("Filter Bar test cases", () => {
   it("should check for the all button on click event", () => {
     const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
     const allButton = getByTestId("all-button");
-    const all = "all";
     jest.spyOn(todoStore, "setFilterText");
-    fireEvent.click(allButton, { target: { value: all } });
-    expect(todoStore.setFilterText).toBeCalledWith(all);
+    fireEvent.click(allButton, { target: { value: filterNames.All } });
+    expect(todoStore.setFilterText).toBeCalledWith(filterNames.All);
   });
   it("should check for the active button on click event", () => {
     const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
     const activeButton = getByTestId("active-button");
-    const active = "active";
     jest.spyOn(todoStore, "setFilterText");
-    fireEvent.click(activeButton, { target: { value: active } });
-    expect(todoStore.setFilterText).toBeCalledWith(active);
+    fireEvent.click(activeButton, { target: { value: filterNames.Active } });
+    expect(todoStore.setFilterText).toBeCalledWith(filterNames.Active);
   });
   it("should check for the completed button on click event", () => {
     const { getByTestId } = render(<FilterBar todoStore={todoStore} />);
     const completedButton = getByTestId("completed-button");
-    const completed = "completed";
     jest.spyOn(todoStore, "setFilterText");
-    fireEvent.click(completedButton, { target: { value: completed } });
-    expect(todoStore.setFilterText).toBeCalledWith(completed);
+    fireEvent.click(completedButton, {
+      target: { value: filterNames.Completed }
+    });
+    expect(todoStore.setFilterText).toBeCalledWith(filterNames.Completed);
   });
 });
