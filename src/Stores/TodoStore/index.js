@@ -31,7 +31,8 @@ class TodoStore {
   }
 
   @computed get filterTodos() {
-    if (this.filterText === "all") {
+    const all = "all";
+    if (this.filterText === all) {
       return this.todoList;
     }
   }

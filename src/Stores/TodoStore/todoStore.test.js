@@ -37,7 +37,8 @@ describe("TodoStore test cases", () => {
   it("should check for the filter Todos computed value functionality", () => {
     todoStore.addTodo("hello");
     todoStore.addTodo("hello world");
-    todoStore.setFilterText("all");
+    const filterName = "all";
+    todoStore.setFilterText(filterName);
     expect(todoStore.filterTodos).toBe(todoStore.todoList);
     todoStore.todoList[0].toggleCompletedStatus();
     expect(todoStore.filterTodos).toBe(todoStore.todoList);
