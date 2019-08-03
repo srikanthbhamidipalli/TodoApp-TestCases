@@ -38,6 +38,9 @@ class TodoStore {
     if (this.filterText === "active") {
       return this.todoList.filter(todoItem => todoItem.isCompleted !== true);
     }
+    if (this.filterText === "completed") {
+      return this.todoList.filter(todoItem => todoItem.isCompleted === true);
+    }
   }
 }
 export default TodoStore;
